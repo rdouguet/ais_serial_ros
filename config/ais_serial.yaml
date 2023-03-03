@@ -1,0 +1,2 @@
+portName: "/dev/mySerial_ais"  # name of ais port com ("/dev/mySerial_ais")
+baudRate: 115200               # ais Baude rate (9600 ,19200 ,38400 ,115200)

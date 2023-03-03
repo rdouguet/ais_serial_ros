@@ -1,0 +1,26 @@
+<launch>
+
+  <!-- network configuration -->
+  <arg name="addr_udp_server" default="10.0.201.101" doc="IP where the ais data will send data packets"/>
+  <arg name="udp_port" default="1234" doc="port to which the ais data should send data"/>
+  <arg name="udp_output_enable" default="true" doc="enable the ais udp output"/>
+
+  <!-- debug info -->
+  <arg name="debug_info" default="true" doc="display more information in ROS consol if true"/>
+
+  <!-- ais_serial_ros -->
+  <node pkg="ais_serial_ros" type="ais_serial_ros_node" name="ais_serial_ros_node" output="screen">
+
+    <!-- network configuration -->
+  	<param name="addr_udp_server" type="string" value="$(arg addr_udp_server)" />
+    <param name="udp_port" type="int" value="$(arg udp_port)" />
+    <param name="udp_output_enable" type="bool" value="$(arg udp_output_enable)" />
+
+    <!-- debug info -->
+	  <param name="debug_info" type="bool" value="$(arg debug_info)" />
+
+    <!-- load configuration file -->
+  	<rosparam command="load" file="$(find ais_serial_ros)/config/ais_serial.yaml" />
+  </node>
+
+</launch>
